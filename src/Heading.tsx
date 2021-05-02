@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
-import { getBorderStyle } from "ui-kit/src/helpers/utils";
+import { getBorderStyle } from "./src/helpers/utils";
 import shallow from "zustand/shallow";
 import { HeadingTypes, HeadingProps } from "./helpers/typings";
 import { ThemeStore, useThemeStore } from "./store/theme";
@@ -11,6 +11,7 @@ const selector = (state: ThemeStore) => ({
   radius: state.radius,
   borders: state.borders,
 });
+
 export const Heading: React.FC<HeadingProps> = (props) => {
   const { colors, sizes, radius, borders } = useThemeStore(selector, shallow);
   const headingTypeProps = props.type
