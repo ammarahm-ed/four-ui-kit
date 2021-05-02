@@ -2935,6 +2935,10 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+"four-ui-kit@https://github.com/ammarahm-ed/four-ui-kit":
+  version "1.0.0"
+  resolved "https://github.com/ammarahm-ed/four-ui-kit#3f99c2c5564457d870fc8b6f1bbf27326d80ec26"
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -6372,9 +6376,6 @@ uglify-es@^3.1.9:
   dependencies:
     commander "~2.13.0"
     source-map "~0.6.1"
-
-ui-kit@../:
-  version "0.0.0"
 
 ultron@1.0.x:
   version "1.0.2"

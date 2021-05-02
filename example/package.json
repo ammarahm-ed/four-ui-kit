@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "four-ui-kit": "https://github.com/ammarahm-ed/four-ui-kit",
     "react": "17.0.1",
     "react-native": "0.64.0"
   },
@@ -25,8 +26,7 @@
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
     "react-test-renderer": "17.0.1",
-    "typescript": "^3.8.3",
-    "ui-kit": "../"
+    "typescript": "^3.8.3"
   },
   "resolutions": {
     "@types/react": "^17"
