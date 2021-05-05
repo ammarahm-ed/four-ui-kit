@@ -1,4 +1,4 @@
-import { LiteralUnion } from "ui-kit/src/helpers/typings";
+import { LiteralUnion } from "../helpers/typings";
 import create, { State } from "zustand";
 export type ThemeType = {
   [name: string]: ColorsType;
@@ -6,32 +6,33 @@ export type ThemeType = {
 
 export const Themes: ThemeType = {
   default: {
-    primary: "",
-    secondary: "",
+    primary: "#55a630",
+    secondary: "#ffffff",
     tertiary: "",
-    accent: "",
-    background: "",
+    accent: "#55a630",
+    background: "#ffffff",
     muted: "#f0f0f0",
-    text: "",
-    heading: "",
-    paragraph: "",
-    info: "",
-    gray: "",
-    black: "#000",
-    white: "#fff",
-    error: "",
-    success: "",
+    text: "#000000",
+    heading: "#000000",
+    paragraph: "#202020",
+    info: "#808080",
+    gray: "#BEBEBE",
+    black: "#000000",
+    white: "#ffffff",
+    error: "#ff9494",
+    success: "#22bb33",
+    warning:"#f0ad4e"
   },
   dark: {
-    primary: "",
-    secondary: "",
+    primary: "#55a630",
+    secondary: "#202020",
     tertiary: "",
-    background: "",
-    muted: "#f0f0f0",
-    text: "",
-    heading: "",
-    paragraph: "",
-    info: "",
+    background: "#202020",
+    muted: "#303030",
+    text: "#ffffff",
+    heading: "#ffffff",
+    paragraph: "#E0E0E0",
+    info: "#808080",
   },
 };
 
@@ -80,6 +81,7 @@ export type ColorsType = {
   white?: string;
   error?: string;
   success?: string;
+  warning?: string;
 };
 
 export type SizesType = {
@@ -128,6 +130,7 @@ export interface ThemeStore extends State {
     white?: string;
     error?: string;
     success?: string;
+    warning?:string;
   };
 
   borders: {

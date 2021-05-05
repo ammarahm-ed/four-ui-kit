@@ -13,19 +13,9 @@ const selector = (state: ThemeStore) => ({
 });
 export const Paragraph: React.FC<ParagraphProps> = (props) => {
   const { colors, sizes, radius, borders } = useThemeStore(selector, shallow);
-  const paragraphTypeProps = props.type
-    ? ParagraphTypes[props.type]
-    : ParagraphTypes["default"];
-  const color = props.color
-    ? colors[props.color]
-    : paragraphTypeProps.color
-    ? colors[paragraphTypeProps.color]
-    : undefined;
-  const size = props.size
-    ? sizes[props.size]
-    : paragraphTypeProps.size
-    ? sizes[paragraphTypeProps.size]
-    : undefined;
+  const paragraphTypeProps = ParagraphTypes[props.type]|| ParagraphTypes["default"];
+    const color = colors[props.color] || colors[paragraphTypeProps.color] || undefined
+    const size = sizes[props.size] || sizes[paragraphTypeProps.size] || undefined;
   const borderStyle = props.border
     ? getBorderStyle(props.border, radius, borders)
     : paragraphTypeProps.border

@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { getBorderStyle } from "./src/helpers/utils";
+import { getBorderStyle } from "./helpers/utils";
 import shallow from "zustand/shallow";
 import { HFlexProps, VFlexTypes } from "./helpers/typings";
 import { ThemeStore, useThemeStore } from "./store/theme";
