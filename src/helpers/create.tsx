@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from "react-native";
-import { getBorderStyle } from './utils';
 import shallow from 'zustand/shallow';
-import { SimpleComponentProps } from './typings';
 import { ThemeStore, useThemeStore } from "../store/theme";
+import { SimpleComponentProps } from './typings';
+import { getBorderStyle } from './utils';
 
 export function createFourUIComponent(Component: React.ComponentType | React.FC, types: any): React.FC {
 
