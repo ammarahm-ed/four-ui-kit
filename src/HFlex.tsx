@@ -9,9 +9,9 @@ const selector = (state: ThemeStore) => ({ colors: state.colors, radius: state.r
 export const VFlex: React.FC<HFlexProps> = ({type="default",background="",border={},...props}) => {
 	const { colors, radius, borders } = useThemeStore(selector, shallow);
 	const hFlexTypeProps = HFlexTypes[type];
-	const bg = colors[hFlexTypeProps.background || background]
+	const bg = colors[background || hFlexTypeProps.background || ""]
 
-	const borderStyle = getBorderStyle(hFlexTypeProps.border || border, radius, borders)
+	const borderStyle = getBorderStyle(border || hFlexTypeProps.border || {} , radius, borders)
 	const flexDirection = props.flexDirection || hFlexTypeProps.flexDirection || "column";
 	const Component = props.component ? props.component : hFlexTypeProps.component ? hFlexTypeProps.component : View;
 

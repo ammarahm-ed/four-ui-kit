@@ -4,6 +4,9 @@ export type ParagraphProps = import("./src/helpers/typings").ParagraphProps;
 export { Heading } from "./src/Heading";
 export type HeadingProps = import("./src/helpers/typings").HeadingProps;
 
+export {createFourUIComponent} from "./src/helpers/create";
+export type SimpleComponentProps = import("./src/helpers/typings").SimpleComponentProps;
+
 export {
   ParagraphTypes,
   HeadingTypes,

@@ -12,17 +12,14 @@ const selector = (state: ThemeStore) => ({
   borders: state.borders,
 });
 
-export const Heading: React.FC<HeadingProps> = (props) => {
+export const Heading: React.FC<HeadingProps> = ({type="default",color="",size=28, ...props}) => {
   const { colors, sizes, radius, borders } = useThemeStore(selector, shallow);
 
-  const headingTypeProps =HeadingTypes[props.type] || HeadingTypes["default"]
-  const color = colors[props.color] || colors[headingTypeProps.color] || undefined
-  const size = sizes[props.size] || sizes[headingTypeProps.size] || undefined;
-  const borderStyle = props.border
-    ? getBorderStyle(props.border, radius, borders)
-    : headingTypeProps.border
-    ? getBorderStyle(headingTypeProps.border, radius, borders)
-    : undefined;
+  const headingTypeProps = HeadingTypes[type]
+  const textColor = colors[color || headingTypeProps.color || "" ]
+  const fontSize = sizes[size || headingTypeProps.size || 15];
+  const borderStyle = getBorderStyle(props.border ||headingTypeProps.border || {}, radius, borders)
+  
 
   return (
     <Text
@@ -32,8 +29,8 @@ export const Heading: React.FC<HeadingProps> = (props) => {
         headingTypeProps.style,
         props.style,
         {
-          color: color,
-          fontSize: size,
+          color: textColor,
+          fontSize: fontSize,
           textAlign: props.align || headingTypeProps.align,
           ...borderStyle,
         },
