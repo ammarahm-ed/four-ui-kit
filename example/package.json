@@ -12,7 +12,8 @@
   "dependencies": {
     "four-ui-kit": "https://github.com/ammarahm-ed/four-ui-kit",
     "react": "17.0.1",
-    "react-native": "0.64.0"
+    "react-native": "0.64.0",
+    "zustand": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

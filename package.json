@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": false,
 	"peerDependencies": {
-	  "zustand": "3.4.1"
+	  "zustand": "*"
 	}
   }
   
