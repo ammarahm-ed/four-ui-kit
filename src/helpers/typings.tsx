@@ -1,5 +1,5 @@
 import React from "react";
-import { TextProps, ViewProps } from "react-native";
+import { SafeAreaView, TextProps, ViewProps } from "react-native";
 import { BorderType, ColorsType, RadiusType, SizesType } from "../store/theme";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
@@ -31,13 +31,13 @@ export interface CustomFlexProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: BorderStyleType;
+  border?: LiteralUnion<keyof BorderStyleType>;
   component?: React.ComponentType;
 }
 
 export interface VFlexProps extends CustomFlexProps, ViewProps {
   flexDirection?: "column" | "column-reverse";
-  type?: LiteralUnion<"default">;
+  type?: LiteralUnion<"default" | "safearea-container" | "center-center">;
 }
 
 export interface HFlexProps extends CustomFlexProps, ViewProps {
@@ -45,10 +45,31 @@ export interface HFlexProps extends CustomFlexProps, ViewProps {
   type?: LiteralUnion<"default">;
 }
 
+export interface SimpleComponentProps extends ViewProps {
+  flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
+  type?: LiteralUnion<"default">;
+  background?: LiteralUnion<keyof ColorsType>;
+  width?: number;
+  height?: number;
+  flex?: number;
+  border?: LiteralUnion<keyof BorderStyleType>;
+}
+
 export const VFlexTypes: { [name: string]: VFlexProps } = {
   default: {
     flexDirection: "column",
   },
+  "safearea-container":{
+    flex:1,
+    component:SafeAreaView
+  },
+  "centered":{
+    flex:1,
+    style:{
+      justifyContent:'center',
+      alignItems:'center'
+    }
+  }
 };
 export const HFlexTypes: { [name: string]: HFlexProps } = {
   default: {

@@ -1,53 +1,30 @@
-import React from "react";
+import React from 'react';
 import { View } from "react-native";
-import { getBorderStyle } from "./helpers/utils";
-import shallow from "zustand/shallow";
-import { HFlexProps, VFlexTypes } from "./helpers/typings";
+import shallow from 'zustand/shallow';
+import { HFlexTypes,HFlexProps  } from './helpers/typings';
+import { getBorderStyle } from './helpers/utils';
 import { ThemeStore, useThemeStore } from "./store/theme";
 
-const selector = (state: ThemeStore) => ({
-  colors: state.colors,
-  radius: state.radius,
-  borders: state.borders,
-});
-export const HFlex: React.FC<HFlexProps> = (props) => {
-  const { colors, radius, borders } = useThemeStore(selector, shallow);
-  const hFlexTypeProps = props.type
-    ? VFlexTypes[props.type]
-    : VFlexTypes["default"];
-  const background = props.background
-    ? colors[props.background]
-    : hFlexTypeProps.background
-    ? colors[hFlexTypeProps.background]
-    : undefined;
-  const borderStyle = props.border
-    ? getBorderStyle(props.border, radius, borders)
-    : hFlexTypeProps.border
-    ? getBorderStyle(hFlexTypeProps.border, radius, borders)
-    : undefined;
-  const flexDirection = props.flexDirection
-    ? props.flexDirection
-    : hFlexTypeProps.flexDirection
-    ? hFlexTypeProps.flexDirection
-    : "row";
-  const Component = props.component
-    ? props.component
-    : hFlexTypeProps.component
-    ? hFlexTypeProps.component
-    : View;
+const selector = (state: ThemeStore) => ({ colors: state.colors, radius: state.radius, borders: state.borders })
+export const VFlex: React.FC<HFlexProps> = ({type="default",background="",border={},...props}) => {
+	const { colors, radius, borders } = useThemeStore(selector, shallow);
+	const hFlexTypeProps = HFlexTypes[type];
+	const bg = colors[hFlexTypeProps.background || background]
 
-  return (
-    <Component
-      {...hFlexTypeProps}
-      {...props}
-      style={[
-        hFlexTypeProps.style,
-        props.style,
-        { backgroundColor: background, ...borderStyle },
-        { flexDirection: flexDirection },
-      ]}
-    >
-      {props.children}
-    </Component>
-  );
-};
+	const borderStyle = getBorderStyle(hFlexTypeProps.border || border, radius, borders)
+	const flexDirection = props.flexDirection || hFlexTypeProps.flexDirection || "column";
+	const Component = props.component ? props.component : hFlexTypeProps.component ? hFlexTypeProps.component : View;
+
+	return <Component
+		{...hFlexTypeProps}
+		{...props}
+		style={[hFlexTypeProps.style,
+		props.style,
+		{ backgroundColor: bg, ...borderStyle, }, { flexDirection: flexDirection }]}
+	>
+		{props.children}
+	</Component>
+}
+
+
+
