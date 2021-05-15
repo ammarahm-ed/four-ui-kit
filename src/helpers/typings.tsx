@@ -4,7 +4,7 @@ import { BorderType, ColorsType, RadiusType, SizesType } from "../store/theme";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
-export type BorderStyleType = {
+export type BorderStyleType = {[name:string]:string | undefined;
   borderWidth?: LiteralUnion<keyof BorderType>;
   borderTopWidth?: LiteralUnion<keyof BorderType>;
   borderRightWidth?: LiteralUnion<keyof BorderType>;
@@ -31,7 +31,7 @@ export interface CustomFlexProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: LiteralUnion<keyof BorderStyleType>;
+  border?: BorderStyleType;
   component?: React.ComponentType;
 }
 
@@ -52,10 +52,11 @@ export interface SimpleComponentProps extends ViewProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: LiteralUnion<keyof BorderStyleType>;
+  border?: BorderStyleType;
 }
 
-export const VFlexTypes: { [name: string]: VFlexProps } = {
+
+export const VFlexTypes: { [name:string]: VFlexProps;default:VFlexProps } = {
   default: {
     flexDirection: "column",
   },
@@ -71,7 +72,7 @@ export const VFlexTypes: { [name: string]: VFlexProps } = {
     }
   }
 };
-export const HFlexTypes: { [name: string]: HFlexProps } = {
+export const HFlexTypes: { [name: string]: HFlexProps;default:HFlexProps } = {
   default: {
     flexDirection: "row",
   },
@@ -81,7 +82,7 @@ export interface ParagraphProps extends TextProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
-export const ParagraphTypes: { [name: string]: ParagraphProps } = {
+export const ParagraphTypes: { [name: string]: ParagraphProps;default:ParagraphProps } = {
   default: {
     size: "sm",
     color: "paragraph",
@@ -92,7 +93,7 @@ export interface HeadingProps extends TextProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
-export const HeadingTypes: { [name: string]: HeadingProps } = {
+export const HeadingTypes: { [name: string]: HeadingProps;default:HeadingProps } = {
   default: {
     style: {
       fontSize: 15,

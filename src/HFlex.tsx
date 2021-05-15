@@ -6,9 +6,9 @@ import { getBorderStyle } from './helpers/utils';
 import { ThemeStore, useThemeStore } from "./store/theme";
 
 const selector = (state: ThemeStore) => ({ colors: state.colors, radius: state.radius, borders: state.borders })
-export const VFlex: React.FC<HFlexProps> = ({type="default",background="",border={},...props}) => {
+export const HFlex: React.FC<HFlexProps> = ({type="default",background="",border={},...props}) => {
 	const { colors, radius, borders } = useThemeStore(selector, shallow);
-	const hFlexTypeProps = HFlexTypes[type];
+	const hFlexTypeProps = HFlexTypes[type] || {}
 	const bg = colors[background || hFlexTypeProps.background || ""]
 
 	const borderStyle = getBorderStyle(border || hFlexTypeProps.border || {} , radius, borders)

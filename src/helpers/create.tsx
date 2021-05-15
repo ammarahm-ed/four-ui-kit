@@ -1,8 +1,9 @@
 import React from 'react';
-import shallow from 'zustand/shallow';
-import { ThemeStore, useThemeStore } from "../store/theme";
-import { SimpleComponentProps } from './typings';
+import { View } from "react-native";
 import { getBorderStyle } from './utils';
+import shallow from 'zustand/shallow';
+import { SimpleComponentProps } from './typings';
+import { ThemeStore, useThemeStore } from "../store/theme";
 
 export function createFourUIComponent(Component: React.ComponentType | React.FC, types: any): React.FC {
 
@@ -10,7 +11,7 @@ export function createFourUIComponent(Component: React.ComponentType | React.FC,
 
     const ReturnComponent: React.FC<SimpleComponentProps> = ({ type = "default", background = "", border = {}, ...props }) => {
         const { colors, radius, borders } = useThemeStore(selector, shallow);
-        const viewTypeProps = types[type];
+        const viewTypeProps = types[type] || {};
         const bg = colors[viewTypeProps.background || background]
         const borderStyle = getBorderStyle(viewTypeProps.border || border, radius, borders)
         const flexDirection = props.flexDirection || viewTypeProps.flexDirection;
