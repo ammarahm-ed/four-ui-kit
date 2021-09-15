@@ -4,7 +4,8 @@ import { BorderType, ColorsType, RadiusType, SizesType } from "../store/theme";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
-export type BorderStyleType = {[name:string]:string | undefined;
+export type BorderStyleType = {
+  [name: string]: string | undefined;
   borderWidth?: LiteralUnion<keyof BorderType>;
   borderTopWidth?: LiteralUnion<keyof BorderType>;
   borderRightWidth?: LiteralUnion<keyof BorderType>;
@@ -37,7 +38,7 @@ export interface CustomFlexProps {
 
 export interface VFlexProps extends CustomFlexProps, ViewProps {
   flexDirection?: "column" | "column-reverse";
-  type?: LiteralUnion<"default" | "safearea-container" | "center-center">;
+  type?: LiteralUnion<"default" | "safearea-container" | "centered">;
 }
 
 export interface HFlexProps extends CustomFlexProps, ViewProps {
@@ -56,23 +57,23 @@ export interface SimpleComponentProps extends ViewProps {
 }
 
 
-export const VFlexTypes: { [name:string]: VFlexProps;default:VFlexProps } = {
+export const VFlexTypes: { [name: string]: VFlexProps; default: VFlexProps } = {
   default: {
     flexDirection: "column",
   },
-  "safearea-container":{
-    flex:1,
-    component:SafeAreaView
+  "safearea-container": {
+    flex: 1,
+    component: SafeAreaView
   },
-  "centered":{
-    flex:1,
-    style:{
-      justifyContent:'center',
-      alignItems:'center'
+  "centered": {
+    flex: 1,
+    style: {
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   }
 };
-export const HFlexTypes: { [name: string]: HFlexProps;default:HFlexProps } = {
+export const HFlexTypes: { [name: string]: HFlexProps; default: HFlexProps } = {
   default: {
     flexDirection: "row",
   },
@@ -82,7 +83,7 @@ export interface ParagraphProps extends TextProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
-export const ParagraphTypes: { [name: string]: ParagraphProps;default:ParagraphProps } = {
+export const ParagraphTypes: { [name: string]: ParagraphProps; default: ParagraphProps } = {
   default: {
     size: "sm",
     color: "paragraph",
@@ -93,7 +94,7 @@ export interface HeadingProps extends TextProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
-export const HeadingTypes: { [name: string]: HeadingProps;default:HeadingProps } = {
+export const HeadingTypes: { [name: string]: HeadingProps; default: HeadingProps } = {
   default: {
     style: {
       fontSize: 15,
