@@ -170,7 +170,7 @@ export interface ThemeStore extends State {
 }
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
-  colors: Themes["default"],
+  colors: {...Themes["default"]},
   sizes: Sizes,
   radius: Radius,
   borders: Borders,

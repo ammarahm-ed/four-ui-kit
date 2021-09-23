@@ -5,7 +5,7 @@ import shallow from 'zustand/shallow';
 import { SimpleComponentProps } from './typings';
 import { ThemeStore, useThemeStore } from "../store/theme";
 
-export function createFourUIComponent(Component: React.ComponentType | React.FC, types: any): React.FC {
+export function createFourUIComponent(Component: React.ComponentType<{ name: string }> | React.FC<{ name: string, }>, types: any): React.FC {
 
     const selector = (state: ThemeStore) => ({ colors: state.colors, radius: state.radius, borders: state.borders })
 
