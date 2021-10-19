@@ -1,8 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
-import { getBorderStyle } from "./helpers/utils";
 import shallow from "zustand/shallow";
-import { HeadingTypes, HeadingProps } from "./helpers/typings";
+import { HeadingProps, HeadingTypes } from "./helpers/typings";
 import { ThemeStore, useThemeStore } from "./store/theme";
 
 const selector = (state: ThemeStore) => ({
@@ -10,16 +9,29 @@ const selector = (state: ThemeStore) => ({
   sizes: state.sizes,
   radius: state.radius,
   borders: state.borders,
+  fonts: state.fonts,
 });
 
-export const Heading: React.FC<HeadingProps> = ({type="default",color="",size=28, ...props}) => {
-  const { colors, sizes, radius, borders } = useThemeStore(selector, shallow);
+export const Heading: React.FC<HeadingProps> = ({
+  type = "default",
+  color = "",
+  size = 28,
+  ...props
+}) => {
+  const { colors, sizes, radius, borders, fonts } = useThemeStore(
+    selector,
+    shallow
+  );
 
-  const headingTypeProps = HeadingTypes[type] || {}
-  const textColor = colors[color || headingTypeProps.color || "" ]
+  const headingTypeProps = HeadingTypes[type] || {};
+  const textColor = colors[color || headingTypeProps.color || ""];
   const fontSize = sizes[size || headingTypeProps.size || 15];
-  const borderStyle = getBorderStyle(props.border ||headingTypeProps.border || {}, radius, borders)
-  
+
+  const _radius =
+    radius[props.radius] ||
+    radius[headingTypeProps.radius] ||
+    radius.sharpcorners;
+  const border = borders[props.border] || borders[headingTypeProps.border] || 0;
 
   return (
     <Text
@@ -27,13 +39,15 @@ export const Heading: React.FC<HeadingProps> = ({type="default",color="",size=28
       {...props}
       style={[
         headingTypeProps.style,
-        props.style,
         {
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || headingTypeProps.align,
-          ...borderStyle,
+          borderRadius: _radius,
+          borderWidth: border,
+          fontFamily: fonts.heading,
         },
+        props.style,
       ]}
     >
       {props.children}

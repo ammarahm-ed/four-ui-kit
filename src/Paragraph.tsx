@@ -1,8 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import shallow from "zustand/shallow";
-import { ParagraphTypes, ParagraphProps } from "./helpers/typings";
-import { getBorderStyle } from "./helpers/utils";
+import { ParagraphProps, ParagraphTypes } from "./helpers/typings";
 import { ThemeStore, useThemeStore } from "./store/theme";
 
 const selector = (state: ThemeStore) => ({
@@ -10,16 +9,28 @@ const selector = (state: ThemeStore) => ({
   sizes: state.sizes,
   radius: state.radius,
   borders: state.borders,
+  fonts: state.fonts,
 });
-export const Paragraph: React.FC<ParagraphProps> = ({type="default",color="",size=15, ...props}) => {
-  const { colors, sizes, radius, borders } = useThemeStore(selector, shallow);
+export const Paragraph: React.FC<ParagraphProps> = ({
+  type = "default",
+  color = "",
+  size = 15,
+  ...props
+}) => {
+  const { colors, sizes, radius, borders, fonts } = useThemeStore(
+    selector,
+    shallow
+  );
 
-  const paragraphTypeProps = ParagraphTypes[type] || {}
-  const textColor = colors[color || paragraphTypeProps.color || "" ]
+  const paragraphTypeProps = ParagraphTypes[type] || {};
+  const textColor = colors[color || paragraphTypeProps.color || ""];
   const fontSize = sizes[size || paragraphTypeProps.size || 15];
-  const borderStyle = getBorderStyle(props.border ||paragraphTypeProps.border || {}, radius, borders)
-  
-
+  const _radius =
+    radius[props.radius] ||
+    radius[paragraphTypeProps.radius] ||
+    radius.sharpcorners;
+  const border =
+    borders[props.border] || borders[paragraphTypeProps.border] || 0;
 
   return (
     <Text
@@ -27,13 +38,15 @@ export const Paragraph: React.FC<ParagraphProps> = ({type="default",color="",siz
       {...props}
       style={[
         paragraphTypeProps.style,
-        props.style,
         {
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || paragraphTypeProps.align,
-          ...borderStyle,
+          borderRadius: _radius,
+          borderWidth: border,
+          fontFamily: fonts.paragraph,
         },
+        props.style,
       ]}
     >
       {props.children}
