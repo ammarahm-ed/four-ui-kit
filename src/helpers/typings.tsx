@@ -4,7 +4,7 @@ import { BorderType, ColorsType, RadiusType, SizesType } from "../store/theme";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
-export type BorderStyleType = {
+/* export type BorderStyleType = {
   [name: string]: string | undefined;
   borderWidth?: LiteralUnion<keyof BorderType>;
   borderTopWidth?: LiteralUnion<keyof BorderType>;
@@ -19,12 +19,13 @@ export type BorderStyleType = {
   borderBottomLeftRadius?: LiteralUnion<keyof RadiusType>;
   borderBottomRightRadius?: LiteralUnion<keyof RadiusType>;
 };
-
+ */
 export interface CustomTextProps {
   color?: LiteralUnion<keyof ColorsType>;
   align?: "left" | "right" | "center";
   size?: LiteralUnion<keyof SizesType>;
-  border?: BorderStyleType;
+  border?: LiteralUnion<keyof BorderType>;
+  radius?:LiteralUnion<keyof RadiusType>;
 }
 
 export interface CustomFlexProps {
@@ -32,7 +33,8 @@ export interface CustomFlexProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: BorderStyleType;
+  border?: LiteralUnion<keyof BorderType>;
+  radius?:LiteralUnion<keyof RadiusType>;
   component?: React.ComponentType;
 }
 
@@ -53,7 +55,8 @@ export interface SimpleComponentProps extends ViewProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: BorderStyleType;
+  border?: LiteralUnion<keyof BorderType>;
+  radius?:LiteralUnion<keyof RadiusType>;
 }
 
 
