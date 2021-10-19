@@ -21,7 +21,7 @@ export const Themes: ThemeType = {
     white: "#ffffff",
     error: "#ff9494",
     success: "#22bb33",
-    warning:"#f0ad4e"
+    warning: "#f0ad4e",
   },
   dark: {
     primary: "#55a630",
@@ -34,6 +34,15 @@ export const Themes: ThemeType = {
     paragraph: "#E0E0E0",
     info: "#808080",
   },
+};
+
+export const Fonts: {
+  [name: string]: string;
+  heading: string;
+  paragraph: string;
+} = {
+  heading: null,
+  paragraph: null,
 };
 
 export const Sizes: { [name: string]: number } = {
@@ -130,7 +139,7 @@ export interface ThemeStore extends State {
     white?: string;
     error?: string;
     success?: string;
-    warning?:string;
+    warning?: string;
   };
 
   borders: {
@@ -139,6 +148,10 @@ export interface ThemeStore extends State {
     normal?: number;
     thick?: number;
     verythick?: number;
+  };
+  fonts: {
+    heading?: string;
+    paragraph?: string;
   };
   radius: {
     [name: string]: number | undefined;
@@ -167,13 +180,16 @@ export interface ThemeStore extends State {
   setSizes: (colors: SizesType) => void;
   setRadius: (colors: RadiusType) => void;
   setTheme: (theme: LiteralUnion<"default" | "dark">) => void;
+  setFonts:(fonts:typeof Fonts) => void;
 }
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
-  colors: {...Themes["default"]},
+  colors: { ...Themes["default"] },
   sizes: Sizes,
   radius: Radius,
   borders: Borders,
+  fonts: Fonts,
+  setFonts:(fonts) => set((state) => ({fonts:{...state.fonts,...fonts}})),
   setColors: (colors) =>
     set((state) => ({ colors: { ...state.colors, ...colors } })),
   setBorders: (borders) =>
