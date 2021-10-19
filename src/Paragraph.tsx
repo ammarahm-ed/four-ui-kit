@@ -14,7 +14,7 @@ const selector = (state: ThemeStore) => ({
 export const Paragraph: React.FC<ParagraphProps> = ({
   type = "default",
   color = "",
-  size = 15,
+  size,
   ...props
 }) => {
   const { colors, sizes, radius, borders, fonts } = useThemeStore(
@@ -23,14 +23,13 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   );
 
   const paragraphTypeProps = ParagraphTypes[type] || {};
-  const textColor = colors[color || paragraphTypeProps.color || ""];
-  const fontSize = sizes[size || paragraphTypeProps.size || 15];
+  const textColor = colors[color || paragraphTypeProps.color || "paragraph"];
+  const fontSize = sizes[size || paragraphTypeProps.size || "sm"];
+
   const _radius =
-    radius[props.radius] ||
-    radius[paragraphTypeProps.radius] ||
-    radius.sharpcorners;
-  const border =
-    borders[props.border] || borders[paragraphTypeProps.border] || 0;
+  radius[props.radius || paragraphTypeProps.radius || "sharpcorners"];
+  radius.sharpcorners;
+  const border = borders[props.border || paragraphTypeProps.border || "none"];
 
   return (
     <Text

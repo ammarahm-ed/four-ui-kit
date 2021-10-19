@@ -65,6 +65,7 @@ export const Radius: { [name: string]: number } = {
   roundcorners: 10,
   squircle: 25,
   circle: 100,
+  none:0
 };
 
 export const Borders: { [name: string]: number } = {
@@ -72,6 +73,7 @@ export const Borders: { [name: string]: number } = {
   normal: 1,
   thick: 2,
   verythick: 4,
+  none:0
 };
 
 export type ColorsType = {
@@ -112,6 +114,7 @@ export type BorderType = {
   normal?: number;
   thick?: number;
   verythick?: number;
+  none?:number
 };
 export type RadiusType = {
   sharpcorners?: number;
@@ -119,6 +122,7 @@ export type RadiusType = {
   roundcorners?: number;
   squircle?: number;
   circle?: number;
+  none?:number
 };
 
 export interface ThemeStore extends State {

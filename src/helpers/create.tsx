@@ -11,6 +11,7 @@ export function createFourUIComponent(
     colors: state.colors,
     radius: state.radius,
     borders: state.borders,
+    sizes:state.sizes
   });
 
   const ReturnComponent: React.FC<SimpleComponentProps> = ({
@@ -18,14 +19,15 @@ export function createFourUIComponent(
     background = "",
     ...props
   }) => {
-    const { colors, radius, borders } = useThemeStore(selector, shallow);
+    const { colors, radius, borders,sizes } = useThemeStore(selector, shallow);
     const viewTypeProps = types[type] || {};
     const bg = colors[viewTypeProps.background || background];
+    
     const _radius =
-      radius[props.radius] ||
-      radius[viewTypeProps.radius] ||
-      radius.sharpcorners;
-    const border = borders[props.border] || borders[viewTypeProps.border] || 0;
+    //@ts-ignore
+      radius[props.radius || viewTypeProps.radius || "none"]
+      //@ts-ignore
+    const border = borders[props.border || viewTypeProps.border || "none"];
     const flexDirection = props.flexDirection || viewTypeProps.flexDirection;
 
     return (
@@ -42,6 +44,10 @@ export function createFourUIComponent(
           },
           props.style,
         ]}
+        //@ts-ignore
+        size={sizes[props.size || viewTypeProps.size || 12]}
+        //@ts-ignore
+        color={colors[props.color || viewTypeProps.color || null]}
       >
         {props.children}
       </Component>
