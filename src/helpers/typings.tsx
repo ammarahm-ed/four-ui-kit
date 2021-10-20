@@ -38,6 +38,7 @@ export interface GeneralProps {
   ml?: number,
   border?: LiteralUnion<keyof BorderType>;
   radius?: LiteralUnion<keyof RadiusType>;
+  flex?:number
 }
 
 
@@ -52,7 +53,6 @@ export interface CustomFlexProps {
   background?: LiteralUnion<keyof ColorsType>;
   width?: number;
   height?: number;
-  flex?: number;
   component?: React.ComponentType;
 }
 
@@ -72,7 +72,6 @@ export interface SimpleComponentProps extends GeneralProps, ViewProps {
   background?: LiteralUnion<keyof ColorsType>;
   width?: number;
   height?: number;
-  flex?: number;
   border?: LiteralUnion<keyof BorderType>;
   radius?: LiteralUnion<keyof RadiusType>;
 }

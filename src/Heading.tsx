@@ -41,6 +41,7 @@ export const Heading: React.FC<HeadingProps> = ({
       style={[
         headingTypeProps.style,
         {
+          flex: props.flex || headingTypeProps.flex || null,
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || headingTypeProps.align,

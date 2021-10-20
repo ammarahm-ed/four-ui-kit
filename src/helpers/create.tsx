@@ -2,6 +2,7 @@ import React from "react";
 import shallow from "zustand/shallow";
 import { ThemeStore, useThemeStore } from "../store/theme";
 import { SimpleComponentProps } from "./typings";
+import { getComponentMargins } from "./utils";
 
 export function createFourUIComponent(
   Component: React.ComponentType<{ name: string }> | React.FC<{ name: string }>,
@@ -29,6 +30,7 @@ export function createFourUIComponent(
       //@ts-ignore
     const border = borders[props.border || viewTypeProps.border || "none"];
     const flexDirection = props.flexDirection || viewTypeProps.flexDirection;
+    const componentMargins = getComponentMargins(props);
 
     return (
       <Component
@@ -42,6 +44,7 @@ export function createFourUIComponent(
             borderWidth: border,
             flexDirection: flexDirection,
           },
+          componentMargins,
           props.style,
         ]}
         //@ts-ignore

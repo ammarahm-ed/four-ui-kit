@@ -1,4 +1,4 @@
-import { getComponentMargins } from "four-ui-kit/src/helpers/utils";
+import { getComponentMargins } from "./helpers/utils";
 import React from "react";
 import { View } from "react-native";
 import shallow from "zustand/shallow";
@@ -40,13 +40,16 @@ export const VFlex: React.FC<VFlexProps> = ({
       style={[
         vFlexTypeProps.style,
         {
+          flex: props.flex || vFlexTypeProps.flex || null,
           backgroundColor: bg,
           borderRadius: _radius,
           borderWidth: border,
-          flexDirection: flexDirection,
         },
         componentMargins,
         props.style,
+        {
+          flexDirection: flexDirection,
+        }
       ]}
     >
       {props.children}

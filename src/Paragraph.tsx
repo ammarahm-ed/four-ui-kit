@@ -1,4 +1,4 @@
-import { getComponentMargins } from "four-ui-kit/src/helpers/utils";
+import { getComponentMargins } from "./helpers/utils";
 import React from "react";
 import { Text } from "react-native";
 import shallow from "zustand/shallow";
@@ -40,6 +40,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
       style={[
         paragraphTypeProps.style,
         {
+          flex: props.flex || paragraphTypeProps.flex || null,
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || paragraphTypeProps.align,
