@@ -114,7 +114,6 @@ export type BorderType = {
   normal?: number;
   thick?: number;
   verythick?: number;
-  none?:number
 };
 export type RadiusType = {
   sharpcorners?: number;
@@ -122,7 +121,6 @@ export type RadiusType = {
   roundcorners?: number;
   squircle?: number;
   circle?: number;
-  none?:number
 };
 
 export interface ThemeStore extends State {
