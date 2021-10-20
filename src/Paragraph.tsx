@@ -1,3 +1,4 @@
+import { getComponentMargins } from "four-ui-kit/src/helpers/utils";
 import React from "react";
 import { Text } from "react-native";
 import shallow from "zustand/shallow";
@@ -14,7 +15,7 @@ const selector = (state: ThemeStore) => ({
 export const Paragraph: React.FC<ParagraphProps> = ({
   type = "default",
   color = "",
-  size,
+  size = 15,
   ...props
 }) => {
   const { colors, sizes, radius, borders, fonts } = useThemeStore(
@@ -30,6 +31,7 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   radius[props.radius || paragraphTypeProps.radius || "sharpcorners"];
   radius.sharpcorners;
   const border = borders[props.border || paragraphTypeProps.border || "none"];
+  const componentMargins = getComponentMargins(props);
 
   return (
     <Text
@@ -43,8 +45,10 @@ export const Paragraph: React.FC<ParagraphProps> = ({
           textAlign: props.align || paragraphTypeProps.align,
           borderRadius: _radius,
           borderWidth: border,
-          fontFamily: fonts.paragraph,
+          //@ts-ignore
+          fontFamily: fonts[props.font || paragraphTypeProps.font || "paragraph"]
         },
+        componentMargins,
         props.style,
       ]}
     >

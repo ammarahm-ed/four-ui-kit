@@ -1,3 +1,4 @@
+import { getComponentMargins } from "four-ui-kit/src/helpers/utils";
 import React from "react";
 import { View } from "react-native";
 import shallow from "zustand/shallow";
@@ -19,10 +20,8 @@ export const VFlex: React.FC<VFlexProps> = ({
   const bg = colors[background || vFlexTypeProps.background || ""];
 
   const _radius =
-    radius[props.radius] ||
-    radius[vFlexTypeProps.radius] ||
-    radius.sharpcorners;
-  const border = borders[props.border] || borders[vFlexTypeProps.border] || 0;
+    radius[props.radius || vFlexTypeProps.radius || "sharpcorners"];
+  const border = borders[props.border || vFlexTypeProps.border || 0];
 
   const flexDirection =
     props.flexDirection || vFlexTypeProps.flexDirection || "column";
@@ -32,6 +31,7 @@ export const VFlex: React.FC<VFlexProps> = ({
     : vFlexTypeProps.component
     ? vFlexTypeProps.component
     : View;
+    const componentMargins = getComponentMargins(props);
 
   return (
     <Component
@@ -45,6 +45,7 @@ export const VFlex: React.FC<VFlexProps> = ({
           borderWidth: border,
           flexDirection: flexDirection,
         },
+        componentMargins,
         props.style,
       ]}
     >

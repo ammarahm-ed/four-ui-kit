@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, TextProps, ViewProps } from "react-native";
-import { BorderType, ColorsType, RadiusType, SizesType } from "../store/theme";
+import { BorderType, ColorsType, Fonts, RadiusType, SizesType } from "../store/theme";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
@@ -20,12 +20,32 @@ export type LiteralUnion<T extends U, U = string> = T | (U & {});
   borderBottomRightRadius?: LiteralUnion<keyof RadiusType>;
 };
  */
+
+export interface GeneralProps {
+  m?: number,
+  p?: number,
+  mv?: number,
+  pv?: number,
+  mh?: number,
+  ph?: number,
+  pt?: number,
+  pb?: number,
+  pr?: number,
+  pl?: number,
+  mt?: number,
+  mb?: number,
+  mr?: number,
+  ml?: number,
+  border?: LiteralUnion<keyof BorderType>;
+  radius?: LiteralUnion<keyof RadiusType>;
+}
+
+
 export interface CustomTextProps {
   color?: LiteralUnion<keyof ColorsType>;
   align?: "left" | "right" | "center";
   size?: LiteralUnion<keyof SizesType>;
-  border?: LiteralUnion<keyof BorderType>;
-  radius?:LiteralUnion<keyof RadiusType>;
+  font?: LiteralUnion<"heading" | "paragraph">;
 }
 
 export interface CustomFlexProps {
@@ -33,22 +53,20 @@ export interface CustomFlexProps {
   width?: number;
   height?: number;
   flex?: number;
-  border?: LiteralUnion<keyof BorderType>;
-  radius?:LiteralUnion<keyof RadiusType>;
   component?: React.ComponentType;
 }
 
-export interface VFlexProps extends CustomFlexProps, ViewProps {
+export interface VFlexProps extends CustomFlexProps, GeneralProps, ViewProps {
   flexDirection?: "column" | "column-reverse";
   type?: LiteralUnion<"default" | "safearea-container" | "centered">;
 }
 
-export interface HFlexProps extends CustomFlexProps, ViewProps {
+export interface HFlexProps extends CustomFlexProps, GeneralProps, ViewProps {
   flexDirection?: "row" | "row-reverse";
   type?: LiteralUnion<"default">;
 }
 
-export interface SimpleComponentProps extends ViewProps {
+export interface SimpleComponentProps extends GeneralProps, ViewProps {
   flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
   type?: LiteralUnion<"default">;
   background?: LiteralUnion<keyof ColorsType>;
@@ -56,7 +74,7 @@ export interface SimpleComponentProps extends ViewProps {
   height?: number;
   flex?: number;
   border?: LiteralUnion<keyof BorderType>;
-  radius?:LiteralUnion<keyof RadiusType>;
+  radius?: LiteralUnion<keyof RadiusType>;
 }
 
 
@@ -82,7 +100,7 @@ export const HFlexTypes: { [name: string]: HFlexProps; default: HFlexProps } = {
   },
 };
 
-export interface ParagraphProps extends TextProps, CustomTextProps {
+export interface ParagraphProps extends TextProps, GeneralProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
@@ -93,7 +111,7 @@ export const ParagraphTypes: { [name: string]: ParagraphProps; default: Paragrap
   },
 };
 
-export interface HeadingProps extends TextProps, CustomTextProps {
+export interface HeadingProps extends TextProps, GeneralProps, CustomTextProps {
   type?: LiteralUnion<"default">;
 }
 
