@@ -1,9 +1,12 @@
 import React from "react";
 import { Text } from "react-native";
 import shallow from "zustand/shallow";
-import { HeadingProps, HeadingTypes } from "./helpers/typings";
-import { ThemeStore, useThemeStore } from "./store/theme";
-import {getComponentMargins} from "./helpers/utils";
+import { getComponentMargins } from "../common/utils";
+import { ThemeStore, useThemeStore } from "../theme";
+import { IHeading } from "./heading.interface";
+import { HeadingTypes } from "./types";
+
+
 const selector = (state: ThemeStore) => ({
   colors: state.colors,
   sizes: state.sizes,
@@ -12,7 +15,7 @@ const selector = (state: ThemeStore) => ({
   fonts: state.fonts,
 });
 
-export const Heading: React.FC<HeadingProps> = ({
+export const Heading: React.FC<IHeading> = ({
   type = "default",
   color = "",
   size = 28,

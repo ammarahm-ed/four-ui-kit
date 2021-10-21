@@ -1,5 +1,6 @@
-import { LiteralUnion } from "../helpers/typings";
+import { LiteralUnion } from "../common";
 import create, { State } from "zustand";
+
 export type ThemeType = {
   [name: string]: ColorsType;
 };

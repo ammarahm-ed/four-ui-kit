@@ -1,9 +1,11 @@
-import { getComponentMargins } from "./helpers/utils";
 import React from "react";
 import { Text } from "react-native";
 import shallow from "zustand/shallow";
-import { ParagraphProps, ParagraphTypes } from "./helpers/typings";
-import { ThemeStore, useThemeStore } from "./store/theme";
+import { getComponentMargins } from "../common/utils";
+import { ThemeStore, useThemeStore } from "../theme";
+import { IParagraph } from "./paragraph.interface";
+import { ParagraphTypes } from "./types";
+
 
 const selector = (state: ThemeStore) => ({
   colors: state.colors,
@@ -12,7 +14,8 @@ const selector = (state: ThemeStore) => ({
   borders: state.borders,
   fonts: state.fonts,
 });
-export const Paragraph: React.FC<ParagraphProps> = ({
+
+export const Paragraph: React.FC<IParagraph> = ({
   type = "default",
   color = "",
   size = 15,

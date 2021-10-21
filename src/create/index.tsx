@@ -1,8 +1,8 @@
 import React from "react";
 import shallow from "zustand/shallow";
-import { ThemeStore, useThemeStore } from "../store/theme";
-import { SimpleComponentProps } from "./typings";
-import { getComponentMargins } from "./utils";
+import { ThemeStore, useThemeStore } from "../theme";
+import { SimpleComponentProps } from "../helpers/typings";
+import { getComponentMargins } from "../helpers/utils";
 
 export function createFourUIComponent(
   Component: React.ComponentType<{ name: string }> | React.FC<{ name: string }>,

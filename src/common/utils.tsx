@@ -1,17 +1,5 @@
 import { ViewStyle } from "react-native";
-import { BorderStyleType, GeneralProps } from "../helpers/typings";
-
-export function getBorderStyle(
-  border: BorderStyleType | { [name: string]: any },
-  radius: { [name: string]: number | undefined },
-  width: { [name: string]: number | undefined }
-) {
-  let style: { [name: string]: any } = {};
-  for (let key in border) {
-    style[key] = radius[border[key]] || width[border[key]]
-  }
-  return style;
-}
+import { IGeneral } from ".";
 
 const styleKeyMap = {
   p: "padding",
@@ -30,7 +18,7 @@ const styleKeyMap = {
   ml: "marginLeft",
 }
 
-export function getComponentMargins(props: GeneralProps): ViewStyle {
+export function getComponentMargins(props: IGeneral): ViewStyle {
   let style: ViewStyle = {};
   for (let key of Object.keys(styleKeyMap)) {
     //@ts-ignore

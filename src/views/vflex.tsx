@@ -1,16 +1,17 @@
-import { getComponentMargins } from "./helpers/utils";
 import React from "react";
 import { View } from "react-native";
 import shallow from "zustand/shallow";
-import { VFlexProps, VFlexTypes } from "./helpers/typings";
-import { ThemeStore, useThemeStore } from "./store/theme";
+import { getComponentMargins } from "../common/utils";
+import { ThemeStore, useThemeStore } from "../theme";
+import { VFlexTypes } from "./types";
+import { IVFlex } from "./vflex.interface";
 
 const selector = (state: ThemeStore) => ({
   colors: state.colors,
   radius: state.radius,
   borders: state.borders,
 });
-export const VFlex: React.FC<VFlexProps> = ({
+export const VFlex: React.FC<IVFlex> = ({
   type = "default",
   background = "",
   ...props
@@ -29,9 +30,9 @@ export const VFlex: React.FC<VFlexProps> = ({
   const Component = props.component
     ? props.component
     : vFlexTypeProps.component
-    ? vFlexTypeProps.component
-    : View;
-    const componentMargins = getComponentMargins(props);
+      ? vFlexTypeProps.component
+      : View;
+  const componentMargins = getComponentMargins(props);
 
   return (
     <Component

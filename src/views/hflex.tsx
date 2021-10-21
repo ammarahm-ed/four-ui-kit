@@ -1,16 +1,17 @@
-import { getComponentMargins } from "./helpers/utils";
 import React from "react";
 import { View } from "react-native";
 import shallow from "zustand/shallow";
-import { HFlexProps, HFlexTypes } from "./helpers/typings";
-import { ThemeStore, useThemeStore } from "./store/theme";
+import { getComponentMargins } from "../common/utils";
+import { ThemeStore, useThemeStore } from "../theme";
+import { IHFlex } from "./hflex.interface";
+import { HFlexTypes } from "./types";
 
 const selector = (state: ThemeStore) => ({
   colors: state.colors,
   radius: state.radius,
   borders: state.borders,
 });
-export const HFlex: React.FC<HFlexProps> = ({
+export const HFlex: React.FC<IHFlex> = ({
   type = "default",
   background = "",
   ...props
