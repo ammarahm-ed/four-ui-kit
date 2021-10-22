@@ -38,13 +38,10 @@ export const Themes: ThemeType = {
 };
 
 export const Fonts: {
-  [name: string]: string;
-  heading: string;
-  paragraph: string;
-} = {
-  heading: null,
-  paragraph: null,
-};
+  [name: string]: string | undefined;
+  heading?: string;
+  paragraph?: string;
+} = {};
 
 export const Sizes: { [name: string]: number } = {
   xxxxs: 8,

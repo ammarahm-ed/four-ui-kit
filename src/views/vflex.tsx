@@ -41,7 +41,7 @@ export const VFlex: React.FC<IVFlex> = ({
       style={[
         vFlexTypeProps.style,
         {
-          flex: props.flex || vFlexTypeProps.flex || null,
+          flex: props.flex || vFlexTypeProps.flex,
           backgroundColor: bg,
           borderRadius: _radius,
           borderWidth: border,

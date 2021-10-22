@@ -4,6 +4,7 @@ import { FUView } from "../views/fuview.interface";
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
 export interface IGeneral {
+  [name:string]:unknown,
   m?: number,
   p?: number,
   mv?: number,

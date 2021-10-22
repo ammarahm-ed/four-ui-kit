@@ -1,7 +1,7 @@
 import { ViewStyle } from "react-native";
 import { IGeneral } from ".";
 
-const styleKeyMap = {
+const styleKeyMap:{[name:string]:string} = {
   p: "padding",
   m: "margin",
   ph: "paddingHorizontal",
@@ -21,9 +21,8 @@ const styleKeyMap = {
 export function getComponentMargins(props: IGeneral): ViewStyle {
   let style: ViewStyle = {};
   for (let key of Object.keys(styleKeyMap)) {
-    //@ts-ignore
     if (props[key]) {
-       //@ts-ignore
+      //@ts-ignore prevent warning index of type can't be used.
       style[styleKeyMap[key]] = props[key];
     };
   }

@@ -40,7 +40,7 @@ export const HFlex: React.FC<IHFlex> = ({
       style={[
         hFlexTypeProps.style,
         {
-          flex: props.flex || hFlexTypeProps.flex || null,
+          flex: props.flex || hFlexTypeProps.flex,
           backgroundColor: bg,
           borderRadius: _radius,
           borderWidth: border,

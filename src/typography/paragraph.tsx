@@ -43,7 +43,7 @@ export const Paragraph: React.FC<IParagraph> = ({
       style={[
         paragraphTypeProps.style,
         {
-          flex: props.flex || paragraphTypeProps.flex || null,
+          flex: props.flex || paragraphTypeProps.flex,
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || paragraphTypeProps.align,

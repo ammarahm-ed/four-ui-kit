@@ -44,7 +44,7 @@ export const Heading: React.FC<IHeading> = ({
       style={[
         headingTypeProps.style,
         {
-          flex: props.flex || headingTypeProps.flex || null,
+          flex: props.flex || headingTypeProps.flex,
           color: textColor,
           fontSize: fontSize,
           textAlign: props.align || headingTypeProps.align,
