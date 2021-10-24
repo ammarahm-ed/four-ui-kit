@@ -1,11 +1,11 @@
 import React from "react";
 import shallow from "zustand/shallow";
-import { ThemeStore, useThemeStore } from "../theme";
 import { SimpleComponentProps } from "../common";
 import { getComponentMargins } from "../common/utils";
+import { ThemeStore, useThemeStore } from "../theme";
 
 export function createFourUIComponent(
-  Component: React.ComponentType<{ name: string }> | React.FC<{ name: string }>,
+  Component: React.ElementType,
   types: any
 ): React.FC {
   const selector = (state: ThemeStore) => ({
