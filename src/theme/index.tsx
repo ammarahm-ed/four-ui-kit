@@ -3,6 +3,8 @@ import create, { State } from "zustand";
 
 export type ThemeType = {
   [name: string]: ColorsType;
+  default:ColorsType;
+  dark:ColorsType;
 };
 
 export const Themes: ThemeType = {
@@ -34,6 +36,7 @@ export const Themes: ThemeType = {
     heading: "#ffffff",
     paragraph: "#E0E0E0",
     info: "#808080",
+    dark:true
   },
 };
 
@@ -91,6 +94,7 @@ export type ColorsType = {
   error?: string;
   success?: string;
   warning?: string;
+  dark?:boolean
 };
 
 export type SizesType = {
@@ -123,7 +127,7 @@ export type RadiusType = {
 
 export interface ThemeStore extends State {
   colors: {
-    [name: string]: string | undefined;
+    [name: string]: string | boolean | undefined;
     primary?: string;
     secondary?: string;
     tertiary?: string;
@@ -140,6 +144,7 @@ export interface ThemeStore extends State {
     error?: string;
     success?: string;
     warning?: string;
+    dark?:boolean
   };
 
   borders: {
