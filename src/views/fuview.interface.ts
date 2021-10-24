@@ -6,5 +6,5 @@ export interface FUView extends ViewProps,IGeneral {
     background?: LiteralUnion<keyof ColorsType>;
     width?: number;
     height?: number;
-    component?: React.ComponentType;
+    component?: React.ElementType;
   }
