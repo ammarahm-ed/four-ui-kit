@@ -1,0 +1,1 @@
+{"version":3,"file":"hflex.interface.d.ts","sourceRoot":"","sources":["../../../src/views/hflex.interface.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,WAAW,CAAC;AACzC,OAAO,EAAE,MAAM,EAAE,MAAM,oBAAoB,CAAC;AAE5C,MAAM,WAAW,MAAO,SAAQ,MAAM;IACpC,aAAa,CAAC,EAAE,KAAK,GAAG,aAAa,CAAC;IACtC,IAAI,CAAC,EAAE,YAAY,CAAC,SAAS,CAAC,CAAC;CAChC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"vflex.interface.d.ts","sourceRoot":"","sources":["../../../src/views/vflex.interface.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,WAAW,CAAC;AACzC,OAAO,EAAE,MAAM,EAAE,MAAM,oBAAoB,CAAC;AAE5C,MAAM,WAAW,MAAO,SAAQ,MAAM;IACpC,aAAa,CAAC,EAAE,QAAQ,GAAG,gBAAgB,CAAC;IAC5C,IAAI,CAAC,EAAE,YAAY,CAAC,SAAS,GAAG,oBAAoB,GAAG,UAAU,CAAC,CAAC;CACpE"}
