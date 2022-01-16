@@ -19,6 +19,14 @@ const marginMap: { [name: string]: string } = {
   ml: "marginLeft",
 };
 
+const positionMap = {
+  justifyContent: "justifyContent",
+  alignItems: "alignItems",
+  width: "width",
+  height: "height",
+  alignSelf: "aligSelf",
+};
+
 const colorsMap: { [name: string]: string } = {
   background: "backgroundColor",
   borderColor: "borderColor",
@@ -34,13 +42,14 @@ const Keys = {
   marginMap: Object.keys(marginMap),
   colorsMap: Object.keys(colorsMap),
   bordersMap: Object.keys(bordersMap),
+  positionMap: Object.keys(positionMap),
 };
 
 export function parseStyles(
   props: IGeneral,
   theme: Partial<ThemeStore>,
   type: { [name: string]: any },
-  defaults?:{ [name: string]: any }
+  defaults?: { [name: string]: any }
 ): ViewStyle {
   let style: ViewStyle = {};
 
@@ -60,13 +69,21 @@ export function parseStyles(
   for (let key of Keys.colorsMap) {
     let value = props[key] || type[key];
     //@ts-ignore prevent warning index of type can't be used.
-    style[colorsMap[key]] = colors[value] || props[key] || defaults[key]
+    style[colorsMap[key]] = colors[value] || props[key] || defaults[key];
   }
 
   for (let key of Keys.marginMap) {
     let value = props[key] || type[key];
     //@ts-ignore prevent warning index of type can't be used.
     style[marginMap[key]] = value;
+  }
+
+  for (let key of Keys.positionMap) {
+    let value = props[key] || type[key];
+    if (value) {
+      //@ts-ignore prevent warning index of type can't be used.
+      style[positionMap[key]] = value;
+    }
   }
   return style;
 }

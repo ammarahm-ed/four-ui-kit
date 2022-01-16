@@ -74,12 +74,28 @@ export interface IGeneral {
    */
   borderColor?: LiteralUnion<keyof ColorsType>;
   flex?: number;
+  justifyContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "stretch"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+  alignItems?: "flex-start" | "flex-end" | "center" | "stretch" | "baseline";
+  alignSelf?:
+    | "auto"
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "stretch"
+    | "baseline";
+  width?: number | string;
+  height?: number | string;
+  background?: LiteralUnion<keyof ColorsType>;
 }
 
 export interface SimpleComponentProps extends FUView {
   flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
   type?: LiteralUnion<"default">;
-  background?: LiteralUnion<keyof ColorsType>;
-  width?: number;
-  height?: number;
 }
