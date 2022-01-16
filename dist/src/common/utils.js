@@ -14,6 +14,13 @@ var marginMap = {
     mr: "marginRight",
     ml: "marginLeft"
 };
+var positionMap = {
+    justifyContent: "justifyContent",
+    alignItems: "alignItems",
+    width: "width",
+    height: "height",
+    alignSelf: "aligSelf"
+};
 var colorsMap = {
     background: "backgroundColor",
     borderColor: "borderColor",
@@ -26,7 +33,8 @@ var bordersMap = {
 var Keys = {
     marginMap: Object.keys(marginMap),
     colorsMap: Object.keys(colorsMap),
-    bordersMap: Object.keys(bordersMap)
+    bordersMap: Object.keys(bordersMap),
+    positionMap: Object.keys(positionMap)
 };
 export function parseStyles(props, theme, type, defaults) {
     var style = {};
@@ -54,6 +62,14 @@ export function parseStyles(props, theme, type, defaults) {
         var value = props[key] || type[key];
         //@ts-ignore prevent warning index of type can't be used.
         style[marginMap[key]] = value;
+    }
+    for (var _f = 0, _g = Keys.positionMap; _f < _g.length; _f++) {
+        var key = _g[_f];
+        var value = props[key] || type[key];
+        if (value) {
+            //@ts-ignore prevent warning index of type can't be used.
+            style[positionMap[key]] = value;
+        }
     }
     return style;
 }
