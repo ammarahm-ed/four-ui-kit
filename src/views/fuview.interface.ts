@@ -1,10 +1,10 @@
 import { ViewProps } from "react-native";
 import { IGeneral, LiteralUnion } from "../common";
-import { ColorsType } from "../theme";
+import { ColorsType } from "../theme/types";
 
-export interface FUView extends ViewProps,IGeneral {
-    background?: LiteralUnion<keyof ColorsType>;
-    width?: number;
-    height?: number;
-    component?: React.ElementType;
-  }
+export interface FUView extends ViewProps, IGeneral {
+  background?: LiteralUnion<keyof ColorsType>;
+  width?: number;
+  height?: number;
+  component?: React.ElementType;
+}

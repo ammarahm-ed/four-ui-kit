@@ -1,11 +1,11 @@
 import React from "react";
 import { Text } from "react-native";
+import { ThemeStore } from "../theme/theme.interface";
 import shallow from "zustand/shallow";
-import { getComponentMargins } from "../common/utils";
-import { ThemeStore, useThemeStore } from "../theme";
+import { parseStyles } from "../common/utils";
+import { useThemeStore } from "../theme";
 import { IParagraph } from "./paragraph.interface";
 import { ParagraphTypes } from "./types";
-
 
 const selector = (state: ThemeStore) => ({
   colors: state.colors,
@@ -15,44 +15,38 @@ const selector = (state: ThemeStore) => ({
   fonts: state.fonts,
 });
 
+const defaults = {
+  color: "paragraph",
+  size: "sm",
+  font: "paragraph",
+};
+
 export const Paragraph: React.FC<IParagraph> = ({
   type = "default",
-  color = "",
-  size = 15,
   ...props
 }) => {
-  const { colors, sizes, radius, borders, fonts } = useThemeStore(
-    selector,
-    shallow
-  );
-
-  const paragraphTypeProps = ParagraphTypes[type] || {};
-  const textColor = colors[color || paragraphTypeProps.color || "paragraph"];
-  const fontSize = sizes[size || paragraphTypeProps.size || "sm"];
-
-  const _radius =
-  radius[props.radius || paragraphTypeProps.radius || "sharpcorners"];
-  radius.sharpcorners;
-  const border = borders[props.border || paragraphTypeProps.border || "none"];
-  const componentMargins = getComponentMargins(props);
+  const state = useThemeStore(selector, shallow);
+  const { sizes, fonts } = state;
+  const currentType = ParagraphTypes[type] || {};
+  const fontSize = sizes[props.size || currentType.size || defaults.size];
+  const parsedStyles = parseStyles(props, state, currentType, defaults);
 
   return (
     <Text
-      {...paragraphTypeProps}
+      {...currentType}
       {...props}
       style={[
-        paragraphTypeProps.style,
+        currentType.style,
+        //@ts-ignore
         {
-          flex: props.flex || paragraphTypeProps.flex,
-          color: textColor,
+          flex: props.flex || currentType.flex,
           fontSize: fontSize,
-          textAlign: props.align || paragraphTypeProps.align,
-          borderRadius: _radius,
-          borderWidth: border,
-          //@ts-ignore
-          fontFamily: fonts[props.font || paragraphTypeProps.font || "paragraph"]
+          textAlign: props.align || currentType.align,
+          fontFamily:
+            //@ts-ignore
+            fonts[props.font || currentType.font || defaults.paragraph],
         },
-        componentMargins,
+        parsedStyles,
         props.style,
       ]}
     >

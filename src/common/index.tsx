@@ -1,27 +1,79 @@
-import { BorderType, ColorsType, RadiusType } from "../theme";
+import { BorderWidth, ColorsType, BorderRadius } from "../theme/types";
 import { FUView } from "../views/fuview.interface";
 
 export type LiteralUnion<T extends U, U = string> = T | (U & {});
 
 export interface IGeneral {
-  [name:string]:unknown,
-  m?: number,
-  p?: number,
-  mv?: number,
-  pv?: number,
-  mh?: number,
-  ph?: number,
-  pt?: number,
-  pb?: number,
-  pr?: number,
-  pl?: number,
-  mt?: number,
-  mb?: number,
-  mr?: number,
-  ml?: number,
-  border?: LiteralUnion<keyof BorderType>;
-  radius?: LiteralUnion<keyof RadiusType>;
-  flex?: number
+  [name: string]: unknown;
+  /**
+   * Margin
+   */
+  m?: number;
+  /**
+   * Padding
+   */
+  p?: number;
+  /**
+   * Margin Vertical
+   */
+  mv?: number;
+  /**
+   * Padding Vertical
+   */
+  pv?: number;
+  /**
+   * Margin Horizontal
+   */
+  mh?: number;
+  /**
+   * Padding Horizontal
+   */
+  ph?: number;
+  /**
+   * Padding Top
+   */
+  pt?: number;
+  /**
+   * Padding Bottom
+   */
+  pb?: number;
+  /**
+   * Padding Right
+   */
+  pr?: number;
+  /**
+   * Padding Left
+   */
+  pl?: number;
+  /**
+   * Margin Top
+   */
+  mt?: number;
+  /**
+   * Margin Bottom
+   */
+  mb?: number;
+  /**
+   * Margin Right
+   */
+  mr?: number;
+  /**
+   * Margin Left
+   */
+  ml?: number;
+  /**
+   * Border Width
+   */
+  border?: LiteralUnion<keyof BorderWidth>;
+  /**
+   * Border Radius
+   */
+  radius?: LiteralUnion<keyof BorderRadius>;
+  /**
+   * Border Color
+   */
+  borderColor?: LiteralUnion<keyof ColorsType>;
+  flex?: number;
 }
 
 export interface SimpleComponentProps extends FUView {
@@ -30,8 +82,4 @@ export interface SimpleComponentProps extends FUView {
   background?: LiteralUnion<keyof ColorsType>;
   width?: number;
   height?: number;
-  border?: LiteralUnion<keyof BorderType>;
-  radius?: LiteralUnion<keyof RadiusType>;
 }
-
-

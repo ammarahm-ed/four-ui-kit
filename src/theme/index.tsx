@@ -1,23 +1,20 @@
+import create from "zustand";
 import { LiteralUnion } from "../common";
-import create, { State } from "zustand";
-
-export type ThemeType = {
-  [name: string]: ColorsType;
-  default:ColorsType;
-  dark:ColorsType;
-};
+import { ThemeStore } from "./theme.interface";
+import { FontsType, ThemeType } from "./types";
 
 export const Themes: ThemeType = {
   default: {
     primary: "#55a630",
     secondary: "#ffffff",
-    tertiary: "",
+    tertiary: "#ffffff",
     accent: "#55a630",
+    shade: "#55a63014",
     background: "#ffffff",
-    muted: "#f0f0f0",
+    muted: "#f7f7f7",
     text: "#000000",
     heading: "#000000",
-    paragraph: "#202020",
+    paragraph: "#303030",
     info: "#808080",
     gray: "#BEBEBE",
     black: "#000000",
@@ -25,26 +22,28 @@ export const Themes: ThemeType = {
     error: "#ff9494",
     success: "#22bb33",
     warning: "#f0ad4e",
+    border: "#e8e8e8",
+    transparent:"transparent",
+    transgray:"#80808030"
+
   },
   dark: {
-    primary: "#55a630",
     secondary: "#202020",
-    tertiary: "",
+    tertiary: "#202020",
     background: "#202020",
     muted: "#303030",
     text: "#ffffff",
     heading: "#ffffff",
     paragraph: "#E0E0E0",
     info: "#808080",
-    dark:true
+    border: "#383838",
+    dark: true,
+    transparent:"transparent",
+    transgray:"#80808030"
   },
 };
 
-export const Fonts: {
-  [name: string]: string | undefined;
-  heading?: string;
-  paragraph?: string;
-} = {};
+export const Fonts: FontsType = {};
 
 export const Sizes: { [name: string]: number } = {
   xxxxs: 8,
@@ -66,7 +65,7 @@ export const Radius: { [name: string]: number } = {
   roundcorners: 10,
   squircle: 25,
   circle: 100,
-  none:0
+  none: 0,
 };
 
 export const Borders: { [name: string]: number } = {
@@ -74,127 +73,17 @@ export const Borders: { [name: string]: number } = {
   normal: 1,
   thick: 2,
   verythick: 4,
-  none:0
+  none: 0,
 };
 
-export type ColorsType = {
-  primary?: string;
-  secondary?: string;
-  tertiary?: string;
-  accent?: string;
-  background?: string;
-  muted?: string;
-  text?: string;
-  heading?: string;
-  paragraph?: string;
-  info?: string;
-  gray?: string;
-  black?: string;
-  white?: string;
-  error?: string;
-  success?: string;
-  warning?: string;
-  dark?:boolean
-};
-
-export type SizesType = {
-  xxxxs?: number;
-  xxxs?: number;
-  xxs?: number;
-  xs?: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-  xl?: number;
-  xxl?: number;
-  xxxl?: number;
-  xxxxl?: number;
-};
-
-export type BorderType = {
-  thin?: number;
-  normal?: number;
-  thick?: number;
-  verythick?: number;
-};
-export type RadiusType = {
-  sharpcorners?: number;
-  softcorners?: number;
-  roundcorners?: number;
-  squircle?: number;
-  circle?: number;
-};
-
-export interface ThemeStore extends State {
-  colors: {
-    [name: string]: string | boolean | undefined;
-    primary?: string;
-    secondary?: string;
-    tertiary?: string;
-    accent?: string;
-    background?: string;
-    muted?: string;
-    text?: string;
-    heading?: string;
-    paragraph?: string;
-    info?: string;
-    gray?: string;
-    black?: string;
-    white?: string;
-    error?: string;
-    success?: string;
-    warning?: string;
-    dark?:boolean
-  };
-
-  borders: {
-    [name: string]: number | undefined;
-    thin?: number;
-    normal?: number;
-    thick?: number;
-    verythick?: number;
-  };
-  fonts: {
-    heading?: string;
-    paragraph?: string;
-  };
-  radius: {
-    [name: string]: number | undefined;
-    sharpcorners?: number;
-    softcorners?: number;
-    roundcorners?: number;
-    squircle?: number;
-    circle?: number;
-  };
-  sizes: {
-    [name: string]: number | undefined;
-    xxxxs?: number;
-    xxxs?: number;
-    xxs?: number;
-    xs?: number;
-    sm?: number;
-    md?: number;
-    lg?: number;
-    xl?: number;
-    xxl?: number;
-    xxxl?: number;
-    xxxxl?: number;
-  };
-  setColors: (colors: ColorsType) => void;
-  setBorders: (colors: BorderType) => void;
-  setSizes: (colors: SizesType) => void;
-  setRadius: (colors: RadiusType) => void;
-  setTheme: (theme: LiteralUnion<"default" | "dark">) => void;
-  setFonts:(fonts:typeof Fonts) => void;
-}
-
-export const useThemeStore = create<ThemeStore>((set, get) => ({
+export const useThemeStore = create<ThemeStore>((set) => ({
   colors: { ...Themes["default"] },
   sizes: Sizes,
   radius: Radius,
   borders: Borders,
   fonts: Fonts,
-  setFonts:(fonts) => set((state) => ({fonts:{...state.fonts,...fonts}})),
+  setFonts: (fonts) =>
+    set((state) => ({ fonts: { ...state.fonts, ...fonts } })),
   setColors: (colors) =>
     set((state) => ({ colors: { ...state.colors, ...colors } })),
   setBorders: (borders) =>

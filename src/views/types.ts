@@ -7,11 +7,9 @@ export const VFlexTypes: { [name: string]: IVFlex; default: IVFlex } = {
     flexDirection: "column",
   },
   "safearea-container": {
-    flex: 1,
     component: SafeAreaView,
   },
   centered: {
-    flex: 1,
     style: {
       justifyContent: "center",
       alignItems: "center",
@@ -22,5 +20,11 @@ export const VFlexTypes: { [name: string]: IVFlex; default: IVFlex } = {
 export const HFlexTypes: { [name: string]: IHFlex; default: IHFlex } = {
   default: {
     flexDirection: "row",
+  },
+  centered: {
+    style: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
   },
 };
