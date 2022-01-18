@@ -30,7 +30,7 @@ const positionMap = {
 const colorsMap: { [name: string]: string } = {
   background: "backgroundColor",
   borderColor: "borderColor",
-  color: "textColor",
+  color: "color",
 };
 
 const bordersMap = {
