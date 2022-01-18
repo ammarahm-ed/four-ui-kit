@@ -52,16 +52,11 @@ export const Button = ({
   opacity,
   alpha,
   style,
-  border,
-  radius,
   onPress,
   title,
   color,
   size,
-  width,
-  height,
   icon,
-  borderColor,
   iconPosition = "left",
   ...restProps
 }: IButton) => {
@@ -83,12 +78,10 @@ export const Button = ({
     return [
       //@ts-ignore
       {
-        width: width || ButtonTypes[type].width,
         alignSelf: "center",
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 0,
-        height: height || ButtonTypes[type].height,
         flexDirection: "row",
       },
       parsedStyles,

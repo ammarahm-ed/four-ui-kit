@@ -47,7 +47,7 @@ var selector = function (state) { return ({
     borders: state.borders
 }); };
 export var Button = function (_a) {
-    var _b = _a.type, type = _b === void 0 ? "default" : _b, selected = _a.selected, background = _a.background, opacity = _a.opacity, alpha = _a.alpha, style = _a.style, border = _a.border, radius = _a.radius, onPress = _a.onPress, title = _a.title, color = _a.color, size = _a.size, width = _a.width, height = _a.height, icon = _a.icon, borderColor = _a.borderColor, _c = _a.iconPosition, iconPosition = _c === void 0 ? "left" : _c, restProps = __rest(_a, ["type", "selected", "background", "opacity", "alpha", "style", "border", "radius", "onPress", "title", "color", "size", "width", "height", "icon", "borderColor", "iconPosition"]);
+    var _b = _a.type, type = _b === void 0 ? "default" : _b, selected = _a.selected, background = _a.background, opacity = _a.opacity, alpha = _a.alpha, style = _a.style, onPress = _a.onPress, title = _a.title, color = _a.color, size = _a.size, icon = _a.icon, _c = _a.iconPosition, iconPosition = _c === void 0 ? "left" : _c, restProps = __rest(_a, ["type", "selected", "background", "opacity", "alpha", "style", "onPress", "title", "color", "size", "icon", "iconPosition"]);
     var state = useThemeStore(selector, shallow);
     var currentType = ButtonTypes[type] || {};
     var selectedColor = state.colors[selected || ButtonTypes[type].selected || "accent"];
@@ -61,12 +61,10 @@ export var Button = function (_a) {
         return [
             //@ts-ignore
             {
-                width: width || ButtonTypes[type].width,
                 alignSelf: "center",
                 justifyContent: "center",
                 alignItems: "center",
                 marginBottom: 0,
-                height: height || ButtonTypes[type].height,
                 flexDirection: "row"
             },
             parsedStyles,
