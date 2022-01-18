@@ -24,7 +24,7 @@ var positionMap = {
 var colorsMap = {
     background: "backgroundColor",
     borderColor: "borderColor",
-    color: "textColor"
+    color: "color"
 };
 var bordersMap = {
     border: "borderWidth",
