@@ -118,7 +118,7 @@ export const Button = ({
             </Paragraph>
           )}
 
-          {icon && iconPosition === "left" && (
+          {icon && iconPosition === "right" && (
             <Icon
               color={color || ButtonTypes[type].color}
               size={size || ButtonTypes[type].size}

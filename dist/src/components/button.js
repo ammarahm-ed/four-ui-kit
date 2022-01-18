@@ -84,7 +84,7 @@ export var Button = function (_a) {
               {title}
             </Paragraph>)}
 
-          {icon && iconPosition === "left" && (<Icon color={color || ButtonTypes[type].color} size={size || ButtonTypes[type].size} style={{ marginLeft: title ? 5 : 0 }} name={icon}/>)}
+          {icon && iconPosition === "right" && (<Icon color={color || ButtonTypes[type].color} size={size || ButtonTypes[type].size} style={{ marginLeft: title ? 5 : 0 }} name={icon}/>)}
         </>)}
     </Pressable>);
 };
