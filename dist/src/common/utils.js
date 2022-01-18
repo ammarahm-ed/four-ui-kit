@@ -37,6 +37,7 @@ var Keys = {
     positionMap: Object.keys(positionMap)
 };
 export function parseStyles(props, theme, type, defaults) {
+    if (defaults === void 0) { defaults = {}; }
     var style = {};
     var colors = theme.colors, radius = theme.radius, borders = theme.borders;
     for (var _i = 0, _a = Keys.bordersMap; _i < _a.length; _i++) {

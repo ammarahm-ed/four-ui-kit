@@ -26,7 +26,7 @@ export const Heading: React.FC<IHeading> = ({ type = "default", ...props }) => {
   const { sizes, fonts } = state;
   const currentType = HeadingTypes[type] || {};
   const fontSize = sizes[props.size || currentType.size || defaults.size];
-  const parsedStyles = parseStyles(props, state, currentType);
+  const parsedStyles = parseStyles(props, state, currentType,defaults);
 
   return (
     <Text

@@ -49,7 +49,7 @@ export function parseStyles(
   props: IGeneral,
   theme: Partial<ThemeStore>,
   type: { [name: string]: any },
-  defaults?: { [name: string]: any }
+  defaults={}
 ): ViewStyle {
   let style: ViewStyle = {};
 

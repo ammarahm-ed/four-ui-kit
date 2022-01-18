@@ -33,7 +33,7 @@ export var Heading = function (_a) {
     var sizes = state.sizes, fonts = state.fonts;
     var currentType = HeadingTypes[type] || {};
     var fontSize = sizes[props.size || currentType.size || defaults.size];
-    var parsedStyles = parseStyles(props, state, currentType);
+    var parsedStyles = parseStyles(props, state, currentType, defaults);
     return (<Text {...currentType} {...props} style={[
             currentType.style,
             //@ts-ignore
