@@ -37,9 +37,10 @@ var Keys = {
     positionMap: Object.keys(positionMap)
 };
 export function parseStyles(props, theme, type, defaults) {
-    if (defaults === void 0) { defaults = {}; }
     var style = {};
     var colors = theme.colors, radius = theme.radius, borders = theme.borders;
+    if (!defaults)
+        defaults = {};
     for (var _i = 0, _a = Keys.bordersMap; _i < _a.length; _i++) {
         var key = _a[_i];
         var value = props[key] || type[key];
@@ -54,9 +55,10 @@ export function parseStyles(props, theme, type, defaults) {
     }
     for (var _b = 0, _c = Keys.colorsMap; _b < _c.length; _b++) {
         var key = _c[_b];
-        var value = props[key] || type[key];
+        //@ts-ignore
+        var value = props[key] || type[key] || defaults[key];
         //@ts-ignore prevent warning index of type can't be used.
-        style[colorsMap[key]] = colors[value] || props[key] || defaults[key];
+        style[colorsMap[key]] = colors[value] || props[key];
     }
     for (var _d = 0, _e = Keys.marginMap; _d < _e.length; _d++) {
         var key = _e[_d];

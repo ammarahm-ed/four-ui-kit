@@ -49,11 +49,13 @@ export function parseStyles(
   props: IGeneral,
   theme: Partial<ThemeStore>,
   type: { [name: string]: any },
-  defaults={}
+  defaults?: { [name: string]: any }
 ): ViewStyle {
   let style: ViewStyle = {};
 
   let { colors, radius, borders } = theme;
+
+  if (!defaults) defaults = {};
 
   for (let key of Keys.bordersMap) {
     let value = props[key] || type[key];
@@ -67,9 +69,10 @@ export function parseStyles(
   }
 
   for (let key of Keys.colorsMap) {
-    let value = props[key] || type[key];
+    //@ts-ignore
+    let value = props[key] || type[key] || defaults[key];
     //@ts-ignore prevent warning index of type can't be used.
-    style[colorsMap[key]] = colors[value] || props[key] || defaults[key];
+    style[colorsMap[key]] = colors[value] || props[key];
   }
 
   for (let key of Keys.marginMap) {
