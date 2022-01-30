@@ -76,7 +76,7 @@ export var Button = function (_a) {
             },
         ];
     };
-    return (<Pressable onPress={onPress} style={getStyle}>
+    return (<Pressable {...currentType} {...restProps} onPress={onPress} style={getStyle}>
       {restProps.children ? (restProps.children) : (<>
           {icon && iconPosition === "left" && (<Icon color={color || ButtonTypes[type].color} size={size || ButtonTypes[type].size} style={{ marginRight: title ? 5 : 0 }} name={icon}/>)}
 

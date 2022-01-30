@@ -95,7 +95,12 @@ export const Button = ({
   };
 
   return (
-    <Pressable onPress={onPress} style={getStyle}>
+    <Pressable
+      {...currentType}
+      {...restProps}
+      onPress={onPress}
+      style={getStyle}
+    >
       {restProps.children ? (
         restProps.children
       ) : (
