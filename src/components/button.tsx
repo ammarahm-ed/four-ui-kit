@@ -18,23 +18,15 @@ export const ButtonTypes: { [name: string]: IButton } = {
   default: {
     selected: "accent",
     background: "accent",
-    opacity: 1,
     color: "white",
     size: "md",
-    width: "100%",
-    height: 50,
-    alpha: 0.1,
   },
   icon: {
     color: "primary",
     size: "xxxl",
     background: "background",
-    selected: "muted",
+    selected: "transgray",
     radius: "circle",
-    style: {
-      width: 55,
-      height: 55,
-    },
   },
 };
 
@@ -81,7 +73,6 @@ export const Button = ({
         alignSelf: "center",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: 0,
         flexDirection: "row",
       },
       parsedStyles,
