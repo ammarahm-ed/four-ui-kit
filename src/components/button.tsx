@@ -88,7 +88,7 @@ export const Button = ({
       style,
       {
         backgroundColor: state.pressed
-          ? rgba_linear_shade(buttonAlpha, selectedColor, 0.3)
+          ? rgba_linear_shade(buttonAlpha, selectedColor, buttonOpacity || 1)
           : hex_to_rgba(backgroundColor, buttonOpacity || 1 - 0.02),
       },
     ];
